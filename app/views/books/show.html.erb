@@ -27,6 +27,22 @@
   <strong>Rating:</strong>
   <%= @book.rating %>
 </p>
-
+<%= link_to "Write Review", new_book_review_path(@book) %>
 <%= link_to 'Edit', edit_book_path(@book) %> |
 <%= link_to 'Back', books_path %>
+<hr>
+
+<h1><strong>Reviews:</strong></h1>
+<% if @reviews.blank? %>
+  <h3>No reviews just yet, would you like to add the first!</h3>
+  <%= link_to "Write Review", new_book_review_path(@book) %>
+<% else %>
+  <% @reviews.each do |review| %>
+    <p><%= review.rating %></p>
+      <p><%= review.comment %></p>
+  <% end %>
+<% end %>
+
+<!-- Work on this later: link_to 'Edit', edit_book_review_path -->
+<%= link_to 'Back', books_path %>
+
