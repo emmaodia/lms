@@ -6,6 +6,9 @@ Rails.application.routes.draw do
 
   # You can have the root of your site routed with "root"
   resources :books do
+  	collection do
+  		get 'search'
+  	end
     resources :reviews, except: [:show, :index]
   end
 

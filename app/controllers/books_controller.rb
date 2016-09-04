@@ -3,8 +3,14 @@ class BooksController < ApplicationController
   before_action :authenticate_user!
   #I set the user to sign up beforee they can view books i removed , except: [:index, :show]
 
-  # GET /books
-  # GET /books.json
+  def search
+    if params[:search].present?
+      @books = Book.search(params[:search])
+    else
+      @books = Book.all
+    end
+  end
+
   def index
     if params[:category].blank?
       @books = Book.all.order ("created_at DESC")
