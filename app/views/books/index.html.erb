@@ -2,6 +2,10 @@
 
 <h1>Listing Books</h1>
 
+<% Category.all.each do |category| %>
+  <%= link_to category.name, books_path(category: category.name) %>
+<% end %>
+
 <table>
   <thead>
     <tr>
@@ -24,6 +28,8 @@
         <td><%= book.description %></td>
         <td><%= book.pages %></td>
         <td><%= book.rating %></td>
+        <!-- I need to make each book print out category name to replace rating -->
+        <!-- <td><%= book.category %></td> -->
         <td><%= link_to 'Show', book %></td>
         <td><%= link_to 'Edit', edit_book_path(book) %></td>
         <td><%= link_to 'Destroy', book, method: :delete, data: { confirm: 'Are you sure?' } %></td>
