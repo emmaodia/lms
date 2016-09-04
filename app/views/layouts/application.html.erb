@@ -23,6 +23,11 @@
 	  <li><%= link_to "Sign In", new_user_session_path, class: "active" %></li>
 	<% end %>
 </ul>
+
+<%= link_to 'home', root_path %>
+<%= link_to 'about', welcome_about_path %>
+<%= link_to 'contact', welcome_contact_path %>
+<%= link_to 'faq', welcome_faq_path %>
 <%= yield %>
 
 </body>
