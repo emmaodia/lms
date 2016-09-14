@@ -33,6 +33,12 @@
 	<% end %>
 </ul>
 
+<% Category.all.each do |category| %>
+  <%= link_to category.name, books_path(category: category.name) %>
+<% end %>
+
+<p><%= link_to "Books", books_path, class: "active" %></p>
+
 <%= yield %>
 
 </body>

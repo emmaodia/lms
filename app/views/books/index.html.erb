@@ -2,9 +2,7 @@
 
 <h1>Listing Books</h1>
 
-<% Category.all.each do |category| %>
-  <%= link_to category.name, books_path(category: category.name) %>
-<% end %>
+
 
 <table>
   <thead>
