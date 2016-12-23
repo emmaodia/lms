@@ -71,6 +71,12 @@ class BooksController < ApplicationController
     end
   end
 
+  def borrow
+      @book = Book.find_by_id(params[:id])
+      @book.update_attribute(:borrowed_at, Time.now)
+      redirect_to @book, notice: 'Book was successfully borrowed.'
+  end
+
   # DELETE /books/1
   # DELETE /books/1.json
   def destroy

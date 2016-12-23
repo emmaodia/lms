@@ -7,37 +7,13 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+<%= render 'layouts/header' %>
+	<div class="container">
 <% flash.each do |name, msg| %>
 	<%= content_tag(:div, msg, class: "alert alert-info") %>
 <% end %>
+</div>
 
-<%= link_to 'home', root_path %>
-<%= link_to 'about', welcome_about_path %>
-<%= link_to 'contact', welcome_contact_path %>
-<%= link_to 'faq', welcome_faq_path %>
-
-<ul class="nav navbar-nav">
-	<% if user_signed_in? %>
-	  <li><%= link_to "New Book", new_book_path, class: "active" %></li>
-	  <li><%= link_to "Account", edit_user_registration_path %></li>
-	  <li><%= link_to "Sign Out", destroy_user_session_path %></li>
-	  <%= form_tag search_books_path, method: :get, class: "navbar-form navbar-right", role: "search" do %>
-        <p>
-          <%= text_field_tag :search, params[:search], class: "form-control" %>
-          <%= submit_tag "Search", name: nil, class: "btn btn-default" %>
-        </p>
-      <% end %>
-	<% else %>
-	  <li><%= link_to "Sign Up", new_user_registration_path, class: "active" %></li>
-	  <li><%= link_to "Sign In", new_user_session_path, class: "active" %></li>
-	<% end %>
-</ul>
-
-<% Category.all.each do |category| %>
-  <%= link_to category.name, books_path(category: category.name) %>
-<% end %>
-
-<p><%= link_to "Books", books_path, class: "active" %></p>
 
 <%= yield %>
 
